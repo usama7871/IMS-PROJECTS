@@ -1,112 +1,23 @@
-<<<<<<< HEAD
-Here's a professional `README.md` for your Next.js project:
+# Quran & Science Learning Platform
 
----
-=======
+Welcome to the *Quran & Science Learning Platform! This project is built using **Next.js* and is designed to provide a unique learning experience by exploring the intersection of scientific principles and Quranic teachings.
 
->>>>>>> c5f1d05be98b8dae0cefa31035bfe1343cf1ccba
+## Overview
 
-# Educational Project Website
+This platform offers a combination of Quranic exegesis, scientific exploration, and interactive tools to enhance the learning process. The project aims to bridge the gap between faith and reason, providing insights into the metaphysical and physical aspects of creation as described in the Quran and supported by modern scientific principles.
 
-This project is a Next.js-based website designed to provide an interactive learning experience, showcasing educational videos and synchronized presentation slides. The project includes a user-friendly interface for navigating through various educational content, organized into separate projects with unique pages for each.
+### Key Features:
+- *Educational Content:* The platform presents lessons, articles, and insights related to both the Quran and scientific discoveries, exploring topics like cosmology, biology, and physics.
+- *Interactive Learning:* Videos and slides are synchronized, allowing for a cohesive learning experience.
+- *Mathematical Models and Equations:* Displaying scientific principles and Quranic references together with mathematical models.
+- *Responsive Design:* The project is fully responsive and designed to work seamlessly on both desktop and mobile devices.
 
-## Features
-
-- **Responsive Design**: The website adapts to different screen sizes for an optimal user experience.
-- **Video-Slide Synchronization**: Videos and slides are uploaded and displayed in sync, offering a cohesive learning experience.
-- **Project Showcase**: The homepage features a main page displaying various educational projects, each with its own dedicated page.
-- **User-Friendly Navigation**: Uses `Link` components with the `legacyBehavior` method to fix navigation issues in Next.js.
-- **Organized File Structure**: Educational content (videos and slides) is organized into dedicated folders for easy management.
+## Technologies Used:
+- *Next.js:* For building a fast, SEO-friendly React application.
+- *React:* For creating interactive and dynamic UI components.
+- *MathJax:* To render complex mathematical equations alongside Quranic verses.
+- *Tailwind CSS (Optional):* For utility-first styling.
 
 ## Project Structure
 
-```
-Public
-  ├── slides/                # Folder containing presentation slides
-  ├── videos/                # Folder containing educational videos
-  ├── slideMetadata.json     # JSON file containing metadata for slides
-
-components
-  ├── SlideViewer.tsx        # Component for viewing slides in sync with videos
-  ├── VideoPlayer.tsx        # Component for video player integration
-  ├── BackgroundLines.tsx    # Background animation component for a dynamic interface
-
-pages
-  ├── projects
-  │   ├── project1.tsx       # Page for the first educational project
-  │   ├── project2.tsx       # Page for the second educational project
-  ├── _app.tsx               # App component for initializing the Next.js app
-  ├── index.tsx             # Homepage showcasing all projects
-  ├── about.tsx              # About page
-  ├── contact.tsx            # Contact page
-
-types
-  └── index.d.ts             # TypeScript types for the project
-```
-
-## Installation
-
-To run the project locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-<<<<<<< HEAD
-   git clone https://github.com/yourusername/your-repository.git
-=======
-   git clone https://github.com/usama7871/usama-apps.git
->>>>>>> c5f1d05be98b8dae0cefa31035bfe1343cf1ccba
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-<<<<<<< HEAD
-   cd your-repository
-=======
-   cd usama-apps
->>>>>>> c5f1d05be98b8dae0cefa31035bfe1343cf1ccba
-   ```
-
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
-
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and visit `http://localhost:3000` to view the website.
-
-## Technologies Used
-
-- **Next.js**: React framework for building server-side rendered applications.
-- **TypeScript**: JavaScript with type safety for better development experience.
-- **React**: A JavaScript library for building user interfaces.
-- **CSS**: Styling for layout and design (includes responsive design).
-
-## How to Contribute
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Make your changes and commit them (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a pull request with a description of your changes.
-<<<<<<< HEAD
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-This `README.md` provides a comprehensive overview of your project, guiding others on how to set it up and contribute. Feel free to modify it based on additional details or adjustments you may need!
-=======
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
->>>>>>> c5f1d05be98b8dae0cefa31035bfe1343cf1ccba
+The project is structured as follows:
