@@ -269,7 +269,7 @@ button {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  color: #fff;
+  color: #000000;
   transition: all 0.4s ease-in-out;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   isolation: isolate; /* Prevent overlapping effects */
@@ -277,28 +277,28 @@ button {
 
 /* Unique Background Colors for Each Button */
 button:nth-child(1) {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Sunset gradient */
+  background: linear-gradient(135deg, #ff512f, #dd2476,  #36d1dc, #5b86e5); /* Sunset gradient */
 }
 button:nth-child(2) {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5); /* Sky gradient */
+  background: linear-gradient(135deg, #36d1dc, #5b86e5,  #ff512f, #dd2476); /* Sky gradient */
 }
 button:nth-child(3) {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0); /* Purple glow */
+  background: linear-gradient(135deg, #8e2de2, #4a00e0, #11998e, #38ef7d); /* Purple glow */
 }
 button:nth-child(4) {
-  background: linear-gradient(135deg, #11998e, #38ef7d); /* Tropical green */
+  background: linear-gradient(135deg, #11998e, #38ef7d, #8e2de2, #4a00e0,); /* Tropical green */
 }
 button:nth-child(5) {
-  background: linear-gradient(135deg, #fc5c7d, #6a82fb); /* Cotton candy */
+  background: linear-gradient(135deg, #fc5c7d, #6a82fb, #ee0979, #ff6a00); /* Cotton candy */
 }
 button:nth-child(6) {
-  background: linear-gradient(135deg, #ee0979, #ff6a00); /* Fiery orange */
+  background: linear-gradient(135deg, #ee0979, #ff6a00, #fc5c7d, #6a82fb); /* Fiery orange */
 }
 
 /* Glow & Interactive Hover Effects */
 button:hover {
   transform: translateY(-8px) scale(1.1) rotate(3deg); /* Add slight tilt */
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5), 0 8px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 251, 226, 0.5), 0 8px 25px rgba(0, 0, 0, 0.4);
   filter: brightness(1.2);
 }
 button:hover::after {
@@ -308,7 +308,7 @@ button:hover::after {
   left: 50%;
   width: 400%;
   height: 400%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 80%);
+  background: radial-gradient(circle, rgb(217, 105, 105), transparent 10%);
   transform: translate(-50%, -50%) scale(0.8);
   z-index: -1;
   transition: transform 0.5s ease-in-out, opacity 0.5s;
@@ -327,7 +327,7 @@ button:active::before {
   left: 50%;
   width: 0;
   height: 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(125, 209, 255, 0.5);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: ripple 0.6s ease-out;
@@ -349,84 +349,41 @@ button:active::before {
 /* Responsive Sizes for Buttons */
 button:nth-child(odd) {
   padding: 18px 40px;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 button:nth-child(even) {
   padding: 12px 28px;
   font-size: 0.9rem;
 }
 
-/* Advanced Animations for Hover */
-button:nth-child(1):hover {
-  animation: swing 1.2s ease-in-out;
-}
-button:nth-child(2):hover {
-  animation: float 1.2s ease-in-out infinite;
-}
-button:nth-child(3):hover {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-button:nth-child(4):hover {
-  animation: bounce 1s ease-in-out infinite;
-}
-button:nth-child(5):hover {
-  animation: vibrate 0.6s ease-in-out infinite;
-}
-button:nth-child(6):hover {
-  animation: rotate-scale 1.5s ease-in-out infinite;
-}
-
-/* Keyframe Animations */
-@keyframes swing {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(10deg); }
-  50% { transform: rotate(-10deg); }
-  75% { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-@keyframes vibrate {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-1px); }
-}
-
-@keyframes rotate-scale {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.2) rotate(180deg); }
-}
-
-@keyframes ripple {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 0.5;
+/* Responsive Styles for Mobile Screens */
+@media (max-width: 768px) {
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
-  100% {
-    width: 400%;
-    height: 400%;
-    opacity: 0;
+
+  button:nth-child(odd),
+  button:nth-child(even) {
+    padding: 10px 18px;
+    font-size: 0.8rem;
   }
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-15px); }
-  60% { transform: translateY(-8px); }
+@media (max-width: 480px) {
+  button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    border-radius: 40px; /* Slightly smaller rounded edges */
+  }
+
+  /* Adjust the button container for small screens */
+  .button-container {
+    gap: 12px; /* Reduce space between buttons */
+    margin: 16px 0;
+  }
 }
-
-
+                                                                                          
 
 
 

@@ -16,6 +16,7 @@ const Project1: React.FC = () => {
   const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
   const [loadingStatus, setLoadingStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
+  // Fetch slide metadata
   useEffect(() => {
     const fetchSlideData = async () => {
       try {
@@ -29,42 +30,72 @@ const Project1: React.FC = () => {
         setLoadingStatus('error');
       }
     };
+
     fetchSlideData();
   }, []);
 
-  const handleTimeUpdate = useCallback((currentTime: number) => {
-    const matchedSlide = slideTimeline.slice().reverse().find((slide) => currentTime >= slide.timestamp);
-    if (matchedSlide) setCurrentSlide(matchedSlide.slide);
-    if (videoRef?.duration) setVideoProgress((currentTime / videoRef.duration) * 100);
-  }, [slideTimeline, videoRef]);
+  // Synchronize slides with video
+  const handleTimeUpdate = useCallback(
+    (currentTime: number) => {
+      const matchedSlide = slideTimeline
+        .slice()
+        .reverse()
+        .find((slide) => currentTime >= slide.timestamp);
 
-  const handleVideoRef = (ref: HTMLVideoElement) => setVideoRef(ref);
+      if (matchedSlide) setCurrentSlide(matchedSlide.slide);
 
-  const goToSlide = (slideNumber: number) => {
-    const targetSlide = slideTimeline.find((s) => s.slide === slideNumber);
-    if (targetSlide && videoRef) {
-      setCurrentSlide(slideNumber);
-      videoRef.currentTime = targetSlide.timestamp;
+      if (videoRef?.duration) {
+        setVideoProgress((currentTime / videoRef.duration) * 100);
+      }
+    },
+    [slideTimeline, videoRef]
+  );
+
+  // Assign video element reference
+  const handleVideoRef = useCallback((ref: HTMLVideoElement) => {
+    setVideoRef(ref);
+  }, []);
+
+  // Navigate to specific slide
+  const goToSlide = useCallback(
+    (slideNumber: number) => {
+      const targetSlide = slideTimeline.find((s) => s.slide === slideNumber);
+      if (targetSlide && videoRef) {
+        setCurrentSlide(slideNumber);
+        videoRef.currentTime = targetSlide.timestamp;
+      }
+    },
+    [slideTimeline, videoRef]
+  );
+
+  // Go to the next slide
+  const goToNextSlide = useCallback(() => {
+    if (currentSlide < slideTimeline.length) {
+      goToSlide(currentSlide + 1);
     }
-  };
+  }, [currentSlide, slideTimeline, goToSlide]);
 
-  const goToNextSlide = () => {
-    if (currentSlide < slideTimeline.length) goToSlide(currentSlide + 1);
-  };
+  // Go to the previous slide
+  const goToPreviousSlide = useCallback(() => {
+    if (currentSlide > 1) {
+      goToSlide(currentSlide - 1);
+    }
+  }, [currentSlide, goToSlide]);
 
-  const goToPreviousSlide = () => {
-    if (currentSlide > 1) goToSlide(currentSlide - 1);
-  };
-
-  const restartPresentation = () => {
+  // Restart presentation
+  const restartPresentation = useCallback(() => {
     if (videoRef) {
       videoRef.currentTime = 0;
       setCurrentSlide(1);
       setVideoProgress(0);
     }
-  };
+  }, [videoRef]);
 
-  const currentSlideData = useMemo(() => slideTimeline.find((slide) => slide.slide === currentSlide), [currentSlide, slideTimeline]);
+  // Memoize current slide data
+  const currentSlideData = useMemo(
+    () => slideTimeline.find((slide) => slide.slide === currentSlide),
+    [currentSlide, slideTimeline]
+  );
 
   return (
     <div className="project-container">
@@ -77,6 +108,7 @@ const Project1: React.FC = () => {
         </p>
       ) : (
         <div className="content-wrapper">
+          {/* Video player with progress bar */}
           <div className="video-and-controls">
             <VideoPlayer onTimeUpdate={handleTimeUpdate} setVideoRef={handleVideoRef} />
             <div className="progress-bar" aria-label="Video Progress">
@@ -88,6 +120,8 @@ const Project1: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Slide viewer with navigation */}
           <div className="slide-and-navigation">
             {currentSlideData && (
               <SlideViewer

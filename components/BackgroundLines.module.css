@@ -203,7 +203,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .circle {
-    opacity: 0.3;
+    opacity: 0.7;
     animation-duration: 12s;
   }
 
